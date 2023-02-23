@@ -182,7 +182,7 @@ html {
 }
 
 body {
-  background-color: #1e252d;
+  background-color: #2d251e;
 }
 
 body.is-preload *,
@@ -2729,7 +2729,7 @@ input[type="radio"]:focus + label:before {
 
 .image.main {
   display: block;
-  margin: 4rem 0;
+  margin: 3.7rem 0;
   width: 100%;
 }
 
@@ -3335,10 +3335,10 @@ table.alt tbody tr td {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #212931;
+  background-color: #423100;
   background-image: url("../../images/overlay.png"),
-    linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
-    url("../../images/bg.jpg");
+    linear-gradient(0deg, rgba(241, 165, 1, 0.904), rgba(0, 0, 0, 0.70)),
+    url("../../images/Apian Resources/Apian Blog BG2.png");
   background-size: auto, auto, 100% auto;
   background-position: center, center, top center;
   background-repeat: repeat, no-repeat, no-repeat;
@@ -4839,4 +4839,8 @@ body.is-preload #intro:not(.hidden) + #header + #nav {
 }
 .moscow tbody tr:hover {
   background: #014055;
+}
+
+.iterationsBg {
+  background-image: linear-gradient(to right,rgb(146, 120, 62),rgb(255, 188, 87));
 }
