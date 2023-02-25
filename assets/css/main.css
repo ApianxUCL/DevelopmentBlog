@@ -3337,7 +3337,7 @@ table.alt tbody tr td {
   height: 100%;
   background-color: #423100;
   background-image: url("../../images/overlay.png"),
-    linear-gradient(0deg, rgba(241, 165, 1, 0.904), rgba(0, 0, 0, 0.70)),
+    linear-gradient(0deg, rgba(241, 165, 1, 0.904), rgba(0, 0, 0, 0.7)),
     url("../../images/Apian Resources/Apian Blog BG2.png");
   background-size: auto, auto, 100% auto;
   background-position: center, center, top center;
@@ -4842,5 +4842,16 @@ body.is-preload #intro:not(.hidden) + #header + #nav {
 }
 
 .iterationsBg {
-  background-image: linear-gradient(to right,rgb(146, 120, 62),rgb(255, 188, 87));
+  background-image: linear-gradient(
+    to right,
+    rgb(146, 120, 62),
+    rgb(255, 188, 87)
+  );
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
