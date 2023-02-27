@@ -1,20 +1,22 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<title>Requirements</title>
+    <head>
+		<title>Evaluation</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="../assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+        <noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+
+
 	</head>
-	<body class="is-preload">
+    <body class="is-preload">
 
 		<!-- Wrapper -->
 			<div id="wrapper">
 
 				<!-- Header -->
 					<header id="header">
-						<a href="../index.html" class="logo">PorterBLE</a>
+						<a href="index.html" class="logo">PorterBLE</a>
 					</header>
 
 				<!-- Nav -->
@@ -22,11 +24,12 @@
 						<ul class="links">
 							<li><a href="../index.html">About</a></li>
 							<li><a href="../Research.html">Research</a></li>
-							<li class="active"><a href="../Requirements.html">Requirements</a></li>
+							<li ><a href="../Requirements.html">Requirements</a></li>
 							<li><a href="../HCI.html">HCI</a></li>
 							<li><a href="../Design.html">Design</a></li>
+              <li><a href="../Implementation.html">Implementation</a></li>
 							<li><a href="../Testing.html">Testing</a></li>
-							<li><a href="../Evaluation.html">Evaluation</a></li>
+							<li class="active"><a href="../Evaluation.html">Evaluation</a></li>
 							<li><a href="../Appendices.html">Appendices</a></li>
 						</ul>
 						<ul class="icons">
@@ -40,69 +43,98 @@
 					<!-- Post -->
 						<section class="post">
 							<header class="major">
-								<h2>Initial Requirements</a></h2>
+								<h2>MoSCow List</h2>
 								<p></p>
 							</header>
 
-							<h3>The Initial Project Briefing</h3>
+                            <table class="moscow" WIDTH="90%">
+                                <thead>
+                                  <tr>
+                                    <th>ID
+                                    <th>Description
+                                    <th>Priority
+                                    <th>State
+                                    <th>Contributor
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>1
+                                    <td>Accurately track the live locations of porters
+                                    <td>MUST
+                                    <td><span>&#10003;</span>
+                                    <td>M
+                                  <tr>
+                                    <td>2
+                                    <td>Display the live locations of all porters to doctors on PC.
+                                    <td>MUST
+                                    <td><span>&#10003;</span>
+                                    <td>F
+                                  <tr>
+                                    <td>3
+                                    <td>Display the delivery details/history of a porter.
+                                    <td>MUST
+                                    <td><span>&#10003;</span>
+                                    <td>M
+                                  <tr>
+                                    <td>4
+                                    <td>Communicate where and when to pick up.
+                                    <td>MUST
+                                    <td><span>&#10003;</span>
+                                    <td>F
+                                  <tr>
+                                    <td>5
+                                    <td>Allow porters to decline/accept tasks.
+                                    <td>MUST
+                                    <td><span>&#10003;</span>
+                                    <td>M
+                                  <tr>
+                                    <td>6
+                                    <td>Communicate to porters without the use of a smartphone necessarily.
+                                    <td>MUST
+                                    <td><span>&#10003;</span>
+                                    <td>M
+                                  <tr>
+                                    <td>7
+                                    <td>Emergency handling features i.e. deal with deliveries that must be completed ASAP such as a blood transfusion delivery.
+                                    <td>MUST
+                                    <td><span>&#10003;</span>
+                                    <td>M
+                                  <tr>
+                                    <td>8
+                                    <td>Consider a range of factors about medical packages when deciding priority 
+                                    <td>SHOULD
+                                    <td><span>&#10003;</span>
+                                    <td>F
+                                <tr>
+                                    <td>9
+                                    <td>Automate the assignments based on a priority list
+                                    <td>SHOUlD
+                                    <td><span>&#10003;</span>
+                                    <td>F
+                                <tr>
+                                    <td>10
+                                    <td>Consider a range of factors about porters when assigning them a delivery
+                                    <td>SHOULD
+                                    <td><span>&#10003;</span>
+                                    <td>F
+                                <tr>
+                                    <td>11
+                                    <td>Ability to track individual high priority assets.
+                                    <td>COULD
+                                    <td><span>&#10003;</span>
+                                    <td>F
+                                <tr>
+                                    <td>12
+                                    <td>See the live locations of all crash calls/integrate into Crash 2222 calls.
+                                    <td>COULD
+                                    <td><span>&#10003;</span>
+                                    <td>F
+                                </tbody>
+                              </table>
 
-							<p><span class="image left"><img src="../images/initialRequirements.png" alt="" /></span>
-								The initial project briefing we received was as follows: Healthcare drone porter 
-								interface, simulating porters around a hospital with multiple building 
-								sites, and can make use of AirTags, BLE devices and other ways of beacon route 
-								finding. Design a front end UI that is cross platform, as well as a SharePoint 
-								solution with equivalent UI to do an A-B test for comparison of results. 
-								Mimicking the UCL buildings to begin with will be a good starting point. Both 
-								packages should enable a hospital to plot locations of porters, and issue 
-								requests to them via Twilio, demonstrate queue and prioritisation of work, 
-								and integrate with other communication services.
-							</p>
-
-							<h3>Requirements</h3>
-							
-							<p>
-								Using the briefing, we tried to write a list of requirements to base a project 
-								on.
-
-								<h4>Functional requirements</h4>
-								<b>Must have:</b>
-								User should be able to:
-								<br>
-								See the live locations of all the porters
-								<br>
-								See the delivery details (to be added) of each porter
-								<br>
-								Communicate with the porters (one-way)
-								I.e. sending a collection request for samples coming in via drone
-								<br>
-								<b>Nice to have:</b>
-								Communicate with porters (two-way)
-								I.e. a porter to be able to decline a request 
-								<br>
-								See the live locations of all crash calls/integrate into Crash 2222 calls
-
-
-
-
-								<h4>Non-functional requirements</h4>
-								<b>Availability and fault tolerance with backups;</b> since the functionality 
-								of the app can be a matter of life and death, it should have virtually 
-								zero downtime.
-								<br>
-								<b>Extendibility;</b> it should be easy to adapt the website to different buildings
-								<br>
-								<b>Usability;</b> the interface should be intuitive and easy to use
-
-							</p>
-							
-							
-
-							</p>
-							<ul class="actions special">
-								<li><a href="../Research.html" class="button">Back</a></li>
-							</ul>
 						</section>
-						
+
+
 				</div>
 
 		<!-- Scripts -->
@@ -114,5 +146,7 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 
-	</body>
-</html>
+
+
+    </body>
+  </html>

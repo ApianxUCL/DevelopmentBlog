@@ -3335,10 +3335,10 @@ table.alt tbody tr td {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #423100;
+  background-color: #ff0000;
   background-image: url("../../images/overlay.png"),
-    linear-gradient(0deg, rgba(241, 165, 1, 0.904), rgba(0, 0, 0, 0.7)),
-    url("../../images/Apian Resources/Apian Blog BG2.png");
+    linear-gradient(0deg, rgb(0, 0, 0), rgb(255, 204, 0)),
+    url("../../images/Apian Resources/Apian\ Blog\ BGTest.png");
   background-size: auto, auto, 100% auto;
   background-position: center, center, top center;
   background-repeat: repeat, no-repeat, no-repeat;
