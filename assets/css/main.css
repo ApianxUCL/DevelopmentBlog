@@ -3337,7 +3337,7 @@ table.alt tbody tr td {
   height: 100%;
   background-color: #423100;
   background-image: url("../../images/overlay.png"),
-    linear-gradient(0deg, rgba(117, 101, 52, 0.824), rgba(0, 0, 0, 0.811)),
+    linear-gradient(0deg, rgba(117, 101, 52, 0.824), rgba(67, 66, 66, 0.811)),
     url("../../images/Apian Resources/Apian Blog BG2.png");
   background-size: auto, auto, 100% auto;
   background-position: center, center, top center;
