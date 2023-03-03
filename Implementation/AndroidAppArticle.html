@@ -44,9 +44,114 @@
 								<h2>Android App Implementation</a></h2>
 								<p></p>
 							</header>
-							<p><span class="image main"><img src="../images/Apian Resources/App Iterations.png" alt="" class="iterationsBg" /></span>
-							<h3>App Requirements</h3>
-								WIP Image is ugly still.</p>
+							<span class="image main"><img src="../images/Apian Resources/App Iterations.png" alt="" class="iterationsBg" /></span>
+							<h2>App Requirements</h2>
+							<p>The mobile application is a fundamental component of our solution. Therefore, before we even started working on its
+								implementation, we had to make sure that its requirements were very well established:
+							</p>
+							<ul>
+								<li>
+									<h3>P0 (Essential product features - cannot launch without them):</h3>
+									<ol>
+										<li>The app must be able to detect nearby Bluetooth Low Energy (BLE) devices along with their MAC-addresses
+											and relative signal strength indicator value (RSSI) which is a measure of how close a beacon is to a phone.
+										</li>
+										<li>
+											The app must be able to transmit all beacons detected to the web-application, so that porters can be tracked.
+										</li>
+										<li>
+											The app must allow a porter (user) to respond to delivery requests made. 
+										</li>
+										<li>
+											The app must allow a porter to indicate that they have completed a delivery.
+										</li>
+										<li>
+											The app must be easy to use for porters so that their daily tasks are not slowed down by trying to navigate it.
+										</li>
+										<li>
+											The app must be able to be re-used on the same device by multiple porters with distinct identities, to enable
+											re-usability of NHS work phones.
+										</li>
+									</ol>
+								</li>
+								<li>
+									<h3>P1 (Important product features):</h3>
+									<ol>
+										<li>
+											The app should allow porters to login to the hospital servers securely with their credentials.
+										</li>
+										<li>
+											The app should authenticate users who successfully login, to ensure that they are real porters.
+										</li>
+										<li>
+											The app should allow porters to indicate their availability to fulfill delivery requests throughout
+											the day.
+										</li>
+										<li>
+											The app should be exported as an APK file with Apian branding so it looks professional.
+										</li>
+										<li>
+											The app should allow porters to stay logged in by caching their login details, so they don't have to
+											login again every time it is launched.
+										</li>
+										<li>
+											The app should allow porters to log out, so it can be re-used on the same device by other porters.
+										</li>
+										<li>
+											The app should scan in the background for BLE beacons and transmit them to the backend, without the screen
+											having to be switched on.
+										</li>
+									</ol>
+								</li>
+								<li>
+									<h3>P2 (Nice to have product features, but the first launch can be made without them):</h3>
+									<ol>
+										<li>
+											The app could display the latest request made along with the delivery locations that need to be reached
+										</li>
+										<li>
+											The app could trigger a notification every time a request is made.
+										</li>
+									</ol>
+								</li>
+							</ul>
+							<h2>Team Background</h2>
+							<p>As mentioned previously, the mobile application is a core requirement of our project set out by Apian. Unfortunately, prior
+								to this project, no one from the team had experience building mobile applications, so our project partners suggested that
+								we design an Android app solution, and pointed out various resources that we could use to get started on our implementation.
+							</p>
+							<h2>Initial Approach</h2>
+							<p>The first step was to successfully implement a foundational part of our Android application, which was the ability to scan for
+								BLE devices. This was a difficult task to implement, as we were just getting used to the Android environment and were still
+								learning how fragments, activities and services interact in the Android development ecosystem.
+								<br/>
+								Another obstacle that we had to overcome was that a lot of resources and tutorials that we found online on BLE scanning,
+								provided classes and methods that were deprecated, so in the end we also had to implement our own version of a method to
+								deal with BLE scanning callbacks.
+								<br/>
+								After many hours of time and effort, we had our first sample application, which was just a single-fragment app that scanned
+								for and displayed the nearest Bluetooth devices (including BLE beacons) along with their MAC addresses:
+							</p>
+							<span class="image main"><img src="../images/First App Implementation.png" alt="" class="iterationBg" />
+								<p class="description">Figure 1: First app implementation, allows user to start and stop scanning for BLE devices. Also able to
+									distinguish and filter between BLE beacons and regular Bluetooth devices.
+								</p>
+							</span>
+							<p>The first implementation provided a great learning experience and an important step towards designing the desired product.</p>
+							<h2>Next Steps: Fulfilling Core App Requirements</h2>
+							<p>
+								After presenting the initial prototype to our clients in one of our weekly meetings and obtaining positive feedback from them,
+								we felt confident moving onto the next step, which was to tick off some other essential requirements <b>(P0)</b> of our application, such
+								as <b>(1) allowing porters to respond to requests</b> and <b>(2) identify themselves while using the app.</b>
+							</p>
+							<h3>Requirement 1: Allowing porters to respond to requests</h3>
+							<p>
+								Text here
+							</p>
+							<h3>Requirement 2: Allowing porters to identify themselves</h3>
+							<p>
+								Text here
+							</p>
 							<ul class="actions special">
 								<li><a href="../Implementation.html" class="button">Back</a></li>
 							</ul>

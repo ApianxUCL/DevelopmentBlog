@@ -4847,11 +4847,28 @@ body.is-preload #intro:not(.hidden) + #header + #nav {
     rgb(146, 120, 62),
     rgb(255, 188, 87)
   );
+  width: 50%;
+}
+
+.iterationBg {
+  background-image: linear-gradient(
+    to left,
+    rgb(161, 137, 101),
+    rgb(226, 217, 204),
+    rgb(255, 243, 226)
+  );
+  width: 75%!important;
+  height: 75%!important;
+}
+
+.description {
+  color:#5f4902;
+  font-size:large;
+  margin-bottom: -40px!important;
 }
 
 .center {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
 }
