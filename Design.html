@@ -46,10 +46,32 @@
 								<h2>System Architecture</h2>
 								<p></p>
 							</header>
-							<p><img src="images/Apian-SysDiagram.png" width="900" alt="" />
-								Our project consists of a mobile application and a website. 
-                                Porters will have a mobile phone with them and our application allows beacons to send their signal and the app will display available MAC addresses for nearby beacons. We then process these MAC addresses and send a POST request to our Spring Boot backend web server.
-                                Then the porter’s live location will be seen on our website based on the nearest beacon. Our system will then allow the medical dispatcher to send a request for delivery based on the nearest porter to the pick-up location.
+							<img src="images/System Architecture.png" width="100%" alt="" />
+							<p>
+							<h3>Our solution consists of a <b>mobile application</b> and a <b>web application</b>:</h3>
+							</p>
+							<p>
+                                Porters will have our mobile phone application installed on their work phones. This application is
+								split into two fragments:
+								<ul>
+									<li><b>Login Fragment: </b>Handles all the logic for a porter to securely login into our PorterBLE system,
+										including the use of a one-time authentication pin. Once a user has been authenticated, the app then
+										establishes a secure, two-way Firebase connection with our web application, so that the two can communicate
+										swiftly and securely.</li>
+									<li><b>Scanner Fragment: </b>Scans for Bluetooth beacons and updates the backend with the latest beacon information
+										every 5 seconds. Allows porters to declare themselves as available/unavailable for deliveries, accept or reject
+										incoming delivery requests and also indicate that they have completed a delivery.</li>
+								</ul>
+								With regards to our web application, usability and delivery speed were our two main concerns. We are proud to have
+								designed a web application that hospital staff can use to quickly create delivery requests which are fulfilled at a
+								quick pace due to our efficient porter selection request system in the backend. A brief overview of the web app:
+								<br/>
+								<ul>
+									<li><b>Frontend: </b>Placeholder maybe Modestas can write an overview here as well as an implementation article</li>
+									<li><b>Backend: </b>Placeholder maybe Modestas can write an overview here as well as an implementation article</li>
+								</ul>
+								For more details and technical information about our implementation, you can check <a href="Implementation.html">our implementation articles</a>
+								which explain how each component of our system was created.
 							</p>
 							
 						</section>
