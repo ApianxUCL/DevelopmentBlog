@@ -118,7 +118,8 @@
 							<h2>Team Background</h2>
 							<p>As mentioned previously, the mobile application is a core requirement of our project set out by Apian. Unfortunately, prior
 								to this project, no one from the team had experience building mobile applications, so our project partners suggested that
-								we design an Android app solution, and pointed out various resources that we could use to get started on our implementation.
+								we design an Android app solution, and pointed out various resources that we could use to get started on our implementation,
+								including Android Developers and LinkedIn Learning.
 							</p>
 							<h2>Initial Approach</h2>
 							<p>The first step was to successfully implement a foundational part of our Android application, which was the ability to scan for
@@ -146,11 +147,74 @@
 							</p>
 							<h3>Requirement 1: Allowing porters to respond to requests</h3>
 							<p>
-								Text here
+								The main task at hand here was to decide via which method porters would communicate with our web application. The obvious choice in this
+								case would be to use some form of HTTP-based communications.<br/>
+								However, after discussing this with our clients, we were able to obtain some very valuable insights about why using SMS-based communication
+								instead for a start, could be much more practical:
+								<ul>
+									<li>Firstly, when considering the way requests are currently fulfilled by porters, we observed that this is done using SMS devices
+										called pagers. Thus, moving forward with an SMS-based solution would make product adoption smoother.
+									</li>
+									<li>
+										Another key consideration we observed was that not every corner of a hospital has strong enough bandwidth and thus, HTTP requests
+										may not deliver in such scenarios where hospital basements or remote locations experience poor connectivity. This also makes
+										our solution more scalable as it could be even adopted in hospitals located in rural or underdeveloped regions where internet
+										infrastructure is limited.
+									</li>
+									<li>
+										One of, if not the most important consideration, that needs to be made when designing a product to be used in hospitals, is how
+										well that product responds to emergencies. Our solution must be robust and efficient. This is something we took very seriously as
+										a team, and through research we found that <b>"Just 15% of hospitals across UK are on the official 'protected sites' list, meaning they
+										would qualify for power during a national blackout."</b>[1] As a result, we need to design a solution that can respond to situations where
+										power - through backup generators for example, may be very limited and can only be used to power essential equipment, leaving hospitals
+										without any bandwidth. Furthermore, this doesn't just apply to the very rare cases of national power outages, as we also observed that,
+										last year during winter, hospitals had to make emergency plans in response to limited gas supplies and winter power loss fears [2].
+									</li>
+								</ul>
+								At the same time, we also acknowledge that SMS communication is not the most secure method we could use to interact with porters. This is because,
+								SMS messages are not encrypted by default [3], which means that any sensitive information, such as medical records or personal details, could potentially
+								be intercepted by malicious third parties. This would pose a significant security risk for hospitals. In contrast, a HTTP-based communication
+								channel, like Firebase Messaging, offers a range of encryption and security options which can protect sensitive patient data. Firebase messaging uses
+								end-to-end encryption to secure messages in transit, which means that messages are encrypted from the sender to the recipient, ensuring that each request
+								will only be directed to and read by the intended porter.
+								<br/>
+								<br/>
+								<b>To conclude our case study,</b> we decided that the first implementations of our solution would make use of SMS responses handled by a central Twilio
+								service, and moving forward, we would migrate this service to a Firebase Messaging implementation, keeping SMS as the fallback system in case of emergencies
+								causing network or power disruptions, ensuring that delivery requests can still be received and processed promptly. We felt that this was the right way to
+								move forward, as most hospitals in the UK have the power capability and technology infrastructure to benefit from a web-centred solution which can provide
+								significant improvements in request efficiency, potentially saving human lives.
 							</p>
 							<h3>Requirement 2: Allowing porters to identify themselves</h3>
 							<p>
-								Text here
+								Whilst we acknowledge that UK hospitals have access to significant technology, we recognize the importance of minimizing excess technology and redirecting
+								funds to invest in more critical equipment. With this consideration in mind, we believe hospitals should only provide enough devices to cover the maximum
+								number of porters on shift at the same time, rather than investing in one work phone for each porter. By allowing porters to reuse the phones with a unique
+								identity on our app, we can reduce excess technology and save funds for more critical equipment.
+							</p>
+							<h3>Implementing requirements 1 & 2</h3>
+							<p>
+								TBC
+							</p>
+							<h2>Bibliography</h2>
+							<p>
+								<ol>
+									<li>
+										Turner, C. (2023). Majority of hospitals not protected by the emergency power plan. The Telegraph.
+										[online] 17 Feb. Available at: https://www.telegraph.co.uk/politics/2022/12/14/majority-hospitals-not-protected-emergency-power-plan-energy/
+										[Accessed 5 Mar. 2023].
+									</li>
+									<li>
+										Lawson, A. and correspondent, A.L.E. (2022). English hospitals make emergency plans amid winter power loss fears. The Guardian.
+										[online] 12 Dec. Available at: https://www.theguardian.com/business/2022/dec/12/english-hospitals-emergency-plans-power-nhs-trusts
+										[Accessed 5 Mar. 2023].
+									</li>
+									<li>
+										Hoffman, C. (2022). Why SMS Text Messages Aren’t Private or Secure. How-To Geek.
+										[online] 10 Nov. Available at: https://www.howtogeek.com/709373/why-sms-text-messages-arent-private-or-secure/
+										[Accessed 5 Mar. 2023].
+									</li>
+								</ol>
 							</p>
 							<ul class="actions special">
 								<li><a href="../Implementation.html" class="button">Back</a></li>
