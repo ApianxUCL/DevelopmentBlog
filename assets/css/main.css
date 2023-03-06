@@ -4851,11 +4851,12 @@ body.is-preload #intro:not(.hidden) + #header + #nav {
 }
 
 .iterationBg {
+  border-radius: 3%;
   background-image: linear-gradient(
-    to left,
-    rgb(161, 137, 101),
-    rgb(226, 217, 204),
-    rgb(255, 243, 226)
+    to right,
+    rgb(230, 187, 0),
+    rgb(241, 198, 80),
+    rgb(255, 216, 108)
   );
   width: 75%!important;
   height: 75%!important;
@@ -4871,4 +4872,51 @@ body.is-preload #intro:not(.hidden) + #header + #nav {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+.implementation-container {
+  border-radius: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 930px;
+  background-color: #ffe365da;
+  color: black!important;
+  padding: 3rem 1rem 3rem 2rem;
+  margin-bottom: 3rem;
+}
+
+.implementation-container h3 {
+  text-align: center;
+}
+
+.feature-container {
+  width: 70%; /* set the desired width */
+  height: 100%;
+}
+
+.buttons-container {
+  width: 20%;
+  display: inline-block;
+  justify-content: space-between;
+  align-items:flex-start;
+  margin-right: 1.25rem;
+}
+
+.prev-btn,
+.next-btn {
+  border-radius: 60%;
+  border: none;
+  background-color: rgb(252, 188, 13);
+  cursor: pointer;
+  margin-bottom: 20px;
+  font-size: larger;
+  font-weight: bolder;
+  display: block;
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+  background-color: rgba(252, 188, 13, 0.678);
+  color: #383838!important;
 }

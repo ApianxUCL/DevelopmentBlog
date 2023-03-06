@@ -2,6 +2,25 @@
 <html>
 	<head>
 		<title>Research</title>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<script>
+		$(function() {
+			var numFeatures = $('.feature-container').length;
+			var currentFeature = 0;
+
+			$('.prev-btn').click(function() {
+			$('.feature-container').eq(currentFeature).hide();
+			currentFeature = (currentFeature - 1 + numFeatures) % numFeatures;
+			$('.feature-container').eq(currentFeature).show();
+			});
+
+			$('.next-btn').click(function() {
+			$('.feature-container').eq(currentFeature).hide();
+			currentFeature = (currentFeature + 1) % numFeatures;
+			$('.feature-container').eq(currentFeature).show();
+			});
+		});
+		</script>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="../assets/css/main.css" />
@@ -49,72 +68,44 @@
 							<p>The mobile application is a fundamental component of our solution. Therefore, before we even started working on its
 								implementation, we had to make sure that its requirements were very well established:
 							</p>
-							<ul>
-								<li>
+							<div class="implementation-container">
+								<div class="feature-container">
 									<h3>P0 (Essential product features - cannot launch without them):</h3>
-									<ol>
-										<li>The app must be able to detect nearby Bluetooth Low Energy (BLE) devices along with their MAC-addresses
-											and relative signal strength indicator value (RSSI) which is a measure of how close a beacon is to a phone.
-										</li>
-										<li>
-											The app must be able to transmit all beacons detected to the web-application, so that porters can be tracked.
-										</li>
-										<li>
-											The app must allow a porter (user) to respond to delivery requests made. 
-										</li>
-										<li>
-											The app must allow a porter to indicate that they have completed a delivery.
-										</li>
-										<li>
-											The app must be easy to use for porters so that their daily tasks are not slowed down by trying to navigate it.
-										</li>
-										<li>
-											The app must be able to be re-used on the same device by multiple porters with distinct identities, to enable
-											re-usability of NHS work phones.
-										</li>
-									</ol>
-								</li>
-								<li>
+									<ul>
+									<li>The app must be able to detect nearby Bluetooth Low Energy (BLE) devices along with their MAC-addresses and relative signal strength indicator value (RSSI) which is a measure of how close a beacon is to a phone.</li>
+									<li>The app must be able to transmit all beacons detected to the web-application, so that porters can be tracked.</li>
+									<li>The app must allow a porter (user) to respond to delivery requests made.</li>
+									<li>The app must allow a porter to indicate that they have completed a delivery.</li>
+									<li>The app must be easy to use for porters so that their daily tasks are not slowed down by trying to navigate it.</li>
+									<li>The app must be able to be re-used on the same device by multiple porters with distinct identities, to enable re-usability of NHS work phones.</li>
+									</ul>
+								</div>
+								
+								<div class="feature-container" style="display:none;">
 									<h3>P1 (Important product features):</h3>
-									<ol>
-										<li>
-											The app should allow porters to login to the hospital servers securely with their credentials.
-										</li>
-										<li>
-											The app should authenticate users who successfully login, to ensure that they are real porters.
-										</li>
-										<li>
-											The app should allow porters to indicate their availability to fulfill delivery requests throughout
-											the day.
-										</li>
-										<li>
-											The app should be exported as an APK file with Apian branding so it looks professional.
-										</li>
-										<li>
-											The app should allow porters to stay logged in by caching their login details, so they don't have to
-											login again every time it is launched.
-										</li>
-										<li>
-											The app should allow porters to log out, so it can be re-used on the same device by other porters.
-										</li>
-										<li>
-											The app should scan in the background for BLE beacons and transmit them to the backend, without the screen
-											having to be switched on.
-										</li>
-									</ol>
-								</li>
-								<li>
+									<ul>
+									<li>The app should allow porters to login to the hospital servers securely with their credentials.</li>
+									<li>The app should authenticate users who successfully login, to ensure that they are real porters.</li>
+									<li>The app should allow porters to indicate their availability to fulfill delivery requests throughout the day.</li>
+									<li>The app should be exported as an APK file with Apian branding so it looks professional.</li>
+									<li>The app should allow porters to stay logged in by caching their login details, so they don't have to login again every time it is launched.</li>
+									<li>The app should allow porters to log out, so it can be re-used on the same device by other porters.</li>
+									<li>The app should scan in the background for BLE beacons and transmit them to the backend, without the screen having to be switched on.</li>
+									</ul>
+								</div>
+								
+								<div class="feature-container" style="display:none;">
 									<h3>P2 (Nice to have product features, but the first launch can be made without them):</h3>
-									<ol>
-										<li>
-											The app could display the latest request made along with the delivery locations that need to be reached
-										</li>
-										<li>
-											The app could trigger a notification every time a request is made.
-										</li>
-									</ol>
-								</li>
-							</ul>
+									<ul>
+									<li>The app could display the latest request made along with the delivery locations that need to be reached</li>
+									<li>The app could trigger a notification every time a request is made.</li>
+									</ul>
+								</div>
+								<div class="buttons-container">
+									<button class="prev-btn">&#9650;</button>
+									<button class="next-btn">&#9660;</button>
+								</div>
+							</div>  
 							<h2>Team Background</h2>
 							<p>As mentioned previously, the mobile application is a core requirement of our project set out by Apian. Unfortunately, prior
 								to this project, no one from the team had experience building mobile applications, so our project partners suggested that
@@ -194,7 +185,21 @@
 							</p>
 							<h3>Implementing requirements 1 & 2</h3>
 							<p>
-								TBC
+								To design our application, we followed an iterative design approach. We felt that this would be the right approach as we were fortunate enough to participate
+								in weekly meetings with our client, where we coult obtain constructive criticism on our solutions and iterate over them until we reach a product that both
+								parites were happy with. As you can observe below in Figure 2, our first iteration involved a name box for porters to enter their name and press 'Submit' to
+								validate their identity. Furthermore, the three buttons observed in the bottom half of the screen each triggered a unique message that was interpreted
+								by our Twilio SMS service to determine what a porter had responded to the delivery request.
+							</p>
+							<span class="image main"><img src="../images/Second App Implementation.png" alt="" class="iterationBg" />
+								<p class="description">Figure 2: Second app implementation, allows user to identify themselves via the name text box, whereby the submit button verifies
+									that the name corresponds to a valid porter name in the backend. Each button in the bottom of the screen triggers a different SMS message sent to our
+									Twilio phone number.
+								</p>
+							</span>
+							<p>
+								For this initial iteration, the way a porter was verified was through a <b>HTTP POST</b> to the backend. If the verification was successful, the relevant pop-up
+								message was displayed. If not, a pop-up message was displayed and the messages including beacon info that were transmitted to the backend would be ignored.
 							</p>
 							<h2>Bibliography</h2>
 							<p>
