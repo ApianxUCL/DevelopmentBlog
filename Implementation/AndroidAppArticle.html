@@ -156,14 +156,14 @@
 										One of, if not the most important consideration, that needs to be made when designing a product to be used in hospitals, is how
 										well that product responds to emergencies. Our solution must be robust and efficient. This is something we took very seriously as
 										a team, and through research we found that <b>"Just 15% of hospitals across UK are on the official 'protected sites' list, meaning they
-										would qualify for power during a national blackout."</b>[1] As a result, we need to design a solution that can respond to situations where
+										would qualify for power during a national blackout."</b><sub>[1]</sub> As a result, we need to design a solution that can respond to situations where
 										power - through backup generators for example, may be very limited and can only be used to power essential equipment, leaving hospitals
 										without any bandwidth. Furthermore, this doesn't just apply to the very rare cases of national power outages, as we also observed that,
-										last year during winter, hospitals had to make emergency plans in response to limited gas supplies and winter power loss fears [2].
+										last year during winter, hospitals had to make emergency plans in response to limited gas supplies and winter power loss fears.<sub>[2]</sub>
 									</li>
 								</ul>
 								At the same time, we also acknowledge that SMS communication is not the most secure method we could use to interact with porters. This is because,
-								SMS messages are not encrypted by default [3], which means that any sensitive information, such as medical records or personal details, could potentially
+								SMS messages are not encrypted by default <sub>[3]</sub> which means that any sensitive information, such as medical records or personal details, could potentially
 								be intercepted by malicious third parties. This would pose a significant security risk for hospitals. In contrast, a HTTP-based communication
 								channel, like Firebase Messaging, offers a range of encryption and security options which can protect sensitive patient data. Firebase messaging uses
 								end-to-end encryption to secure messages in transit, which means that messages are encrypted from the sender to the recipient, ensuring that each request
@@ -223,19 +223,33 @@
 								however this raises two great concerns:
 								<ol>
 									<li>A phone that is constantly scanning for BLE beacons is likely to pick up multiple Bluetooth devices per second, especially in a hospital setting where there are thousands of
-										specialised equipment.
+										specialised equipment. As a result, the aforementioned implementation would lead to multiple HTTP requests sent per second, creating unecessary web traffic.
 									</li>
 									<li>
 										If the signal strength picked up by a specific beacon changes, then that is considered a new scan result, so a phone could potentially transmit the same beacon multiple times
 										within a few seconds if a user keeps walking around; which is very much the case for porters who have to move constantly around a hospital to fulfill deliveries.
 									</li>
 								</ol>
-								To counter these issues...
+								To avoid these concerns, firstly we had to decide how often we would need to update a porter's location. Given that the average walking speed for adults is less than 1.4 m/s <sub>[4]</sub> , we
+								decided that updating porters' positions every 5 seconds would be more than satisfactory for the purposes of our project. To do this, we created a Runnable object in our
+								Android application, which would be executed every 5 seconds as a background process, so it doesn't interfere with the main UI thread, which would send a HTTP POST of all
+								beacons detected within that timeframe. 
+								<br/><br/>
+								Our next concern revolved around potential duplicate scan results, upon change in beacon signal strength. To overcome this, we stored detected beacons inside a HashMap, where
+								the key was a beacon's MAC-Address. As a result, whenever a beacon that was already in the HashMap was detected, its value was overwitten by the latest entry. This HashMap also
+								acted as a buffer to hold beacons detected for 5 seconds, and was emptied whenever its contents were transmitted.
+								<br/>
+								A more technical explanation with snippets of code can be observed below in Figure 3:
 							</p>
 							<span class="image main"><img src="../images/Sending Beacons.png" alt="" class="iterationBg" />
 								<p class="description">Figure 3: Description of how beacons are identified and transmitted to the backend.
 								</p>
 							</span>
+							<p>
+								With this implementation, we had also ticked off our final P0 requirement, which aimed to make the experience of using the app straightforward for porters. All they have
+								to do is enter their name, click on the scan button to start tracking themselves, and respond to requests by clicking the buttons in the bottom-half of the screen. Overall,
+								all core app requirements had been completed at this stage.
+							</p>
 							<h2>Bibliography</h2>
 							<p>
 								<ol>
@@ -253,6 +267,11 @@
 										Hoffman, C. (2022). Why SMS Text Messages Aren’t Private or Secure. How-To Geek.
 										[online] 10 Nov. Available at: https://www.howtogeek.com/709373/why-sms-text-messages-arent-private-or-secure/
 										[Accessed 5 Mar. 2023].
+									</li>
+									<li>
+										Fletcher, J. (2022). Average walking speed: Comparisons by age, sex, and walking for health.
+										[online] www.medicalnewstoday.com. Available at: https://www.medicalnewstoday.com/articles/average-walking-speed
+										[Accessed 13 Mar. 2023].
 									</li>
 								</ol>
 							</p>
