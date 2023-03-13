@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Research</title>
+		<title>Implementation</title>
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 		<script>
 		$(function() {
@@ -130,7 +130,7 @@
 								</p>
 							</span>
 							<p>The first implementation provided a great learning experience and an important step towards designing the desired product.</p>
-							<h2>Next Steps: Fulfilling Core App Requirements</h2>
+							<h2>Next Steps: Fulfilling Other Core App Requirements</h2>
 							<p>
 								After presenting the initial prototype to our clients in one of our weekly meetings and obtaining positive feedback from them,
 								we felt confident moving onto the next step, which was to tick off some other essential requirements <b>(P0)</b> of our application, such
@@ -189,7 +189,9 @@
 								in weekly meetings with our client, where we coult obtain constructive criticism on our solutions and iterate over them until we reach a product that both
 								parites were happy with. As you can observe below in Figure 2, our first iteration involved a name box for porters to enter their name and press 'Submit' to
 								validate their identity. Furthermore, the three buttons observed in the bottom half of the screen each triggered a unique message that was interpreted
-								by our Twilio SMS service to determine what a porter had responded to the delivery request.
+								by our Twilio SMS service to determine what a porter had responded to the delivery request. This implementation also made it easy to fulfill another core
+								requirement (P0) which stated: " The app must allow a porter to indicate that they have completed a delivery. " This was easily achieved by adding a 'Delivery
+								Complete' button with the same functionality as the 'Accept' and 'Reject' buttons.
 							</p>
 							<span class="image main"><img src="../images/Second App Implementation.png" alt="" class="iterationBg" />
 								<p class="description">Figure 2: Second app implementation, allows user to identify themselves via the name text box, whereby the submit button verifies
@@ -198,9 +200,42 @@
 								</p>
 							</span>
 							<p>
-								For this initial iteration, the way a porter was verified was through a <b>HTTP POST</b> to the backend. If the verification was successful, the relevant pop-up
-								message was displayed. If not, a pop-up message was displayed and the messages including beacon info that were transmitted to the backend would be ignored.
+								To further explain the functionality of the 'sendSMS' Kotlin function above, firstly, a PendingIntent object was created. A PendingIntent is essentially a token
+								that is used when an external function is called (in this case a function of the SMSManager class) which allows a user to be notified as to whether the function was
+								successful. In our case, the Pending Intent was passed onto the function 'sendTextMessage' which obtained an instance of the mobile phone's SMS Manager to send a
+								text message. Having objects like the intent described above, made testing the application much easier for us.
+								<br/><br/>
+								For this initial iteration, the way a porter was verified was through a <b>HTTP POST</b> to the backend that was triggered every time a user clicked on 'Submit'.
+								The HTTP response code of this POST was observed, and if the relevant code was received, i.e. verification was successful, a pop-up message welcoming the user was
+								displayed. If the verification was unsuccessful, a pop-up message informing the user of this was displayed, and the messages including beacon info that were transmitted
+								to the backend would be ignored.
+								<br/>
+								This implementation also fulfilled another core requirement (P0): "The app must be able to be re-used on the same device by multiple porters with distinct identities, to enable
+								re-usability of NHS work phones." However, this was only the initial step into getting a porter verified and we knew we could improve a lot in this scenario.
 							</p>
+							<h3>Implementing final core requirements</h3>
+							<p>
+								By this stage, the only core requirements that were left to fulfill were transmitting identified Bluetooth beacons to the backend, whilst also keeping the app simple to use, so
+								it doesn't slow down porters trying to navigate it.
+								<br/><br/>
+								Since beacon data would be transmitted via HTTP POST, it was crucial for us to limit the number of requests sent to the backend, so as to keep server traffic low and enhance
+								performance, which in turn would mean porters can receive and respond to requests swiftly. A naive approach would be to send a HTTP request whenever a beacon was identified,
+								however this raises two great concerns:
+								<ol>
+									<li>A phone that is constantly scanning for BLE beacons is likely to pick up multiple Bluetooth devices per second, especially in a hospital setting where there are thousands of
+										specialised equipment.
+									</li>
+									<li>
+										If the signal strength picked up by a specific beacon changes, then that is considered a new scan result, so a phone could potentially transmit the same beacon multiple times
+										within a few seconds if a user keeps walking around; which is very much the case for porters who have to move constantly around a hospital to fulfill deliveries.
+									</li>
+								</ol>
+								To counter these issues...
+							</p>
+							<span class="image main"><img src="../images/Sending Beacons.png" alt="" class="iterationBg" />
+								<p class="description">Figure 3: Description of how beacons are identified and transmitted to the backend.
+								</p>
+							</span>
 							<h2>Bibliography</h2>
 							<p>
 								<ol>
