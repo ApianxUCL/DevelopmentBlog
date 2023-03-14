@@ -269,12 +269,12 @@
 								to handle data input by the user through the fragment, and would make the relevant requests to the server to authenticate a user through the LoginDataSource class. The UML diagram
 								for the login functionality can be found below:
 							</p>
-							<span class="image main"><img src="../images/Login Iterations.png" alt="" class="iterationBg" />
+							<span class="image main"><img src="../images/Login UML.png" alt="" class="iterationBgBigger" />
 								<p class="description">Figure 5: Unified Modelling Language (UML) diagram overview of Login functionality.
 								</p>
 							</span>
 							<p>
-								As you can observe, there are a lot of functions such as onCreateView, onViewCreated, onDestroyView etc. These are some fundamental functions which run during the lifecycle
+								As you can observe from the 'LoginFragment' class, there are a few protected functions called onCreateView, onViewCreated, onDestroyView etc. These are some fundamental functions which run during the lifecycle
 								of a fragment, which android developers have to override a lot of times to add functionality to their applications. For further clarification as to what each function does
 								in a fragment's lifecycle, please refer to the image below:
 							</p>
@@ -339,7 +339,7 @@
 								point, the view of our application has been initialised, including text boxes and buttons, so in the 'onViewCreated' function our task was to bind these text boxes to private class String variables and also
 								bind the buttons on screen to the relevant class Buttons which trigger their own private method when clicked.
 							</p>
-							<span class="image main"><img src="../images/Login OnViewCreated.png" alt="" class="iterationBg" />
+							<span class="image main"><img src="../images/Login OnViewCreated.png" alt="" class="iterationLightBg" />
 								<p class="description">Figure 7: Login 'onViewCreated' code
 								</p>
 							</span>
