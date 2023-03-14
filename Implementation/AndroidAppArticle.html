@@ -275,12 +275,85 @@
 							</span>
 							<p>
 								As you can observe, there are a lot of functions such as onCreateView, onViewCreated, onDestroyView etc. These are some fundamental functions which run during the lifecycle
-								of a fragment. For further clarification as to what each function does in a fragment's lifecycle, please refer to the image below:
+								of a fragment, which android developers have to override a lot of times to add functionality to their applications. For further clarification as to what each function does
+								in a fragment's lifecycle, please refer to the image below:
 							</p>
-							<span class="image main"><img src="../images/Login Iterations.png" alt="" class="iterationBg" />
-								<p class="description">Figure 6: Android Fragment Lifecycle Overview.
+							<span class="image main"><img src="../images/Fragment Lifecycle.png" alt="" class="iterationBg" />
+								<p class="description">Figure 6: Android Fragment Lifecycle Overview. <sub>[5]</sub>
 								</p>
 							</span>
+							<p>The table below describes what each function is responsible for: <sub>[5]</sub></p>
+							<table>
+								<tr>
+									<td><b>Method</b></td>
+									<td><b>Description</b></td>
+								</tr>
+								<tr>
+									<td>onAttach()</td>
+									<td>The very first method to be called when the fragment has been associated with the activity. This method executes only once during the lifetime of a fragment.</td>
+								</tr>
+								<tr>
+									<td>onCreate()</td>
+									<td>This method initializes the fragment by adding all the required attributes and components.</td>
+								</tr>
+								<tr>
+									<td>onCreateView()</td>
+									<td>System calls this method to create the user interface of the fragment. The root of the fragment’s layout is returned as the View component by this method to draw the UI.</td>
+								</tr>
+								<tr>
+									<td>onViewCreated()</td>
+									<td>It indicates that the activity has been created in which the fragment exists. View hierarchy of the fragment also instantiated before this function call. </td>
+								</tr>
+								<tr>
+									<td>onStart()</td>
+									<td>The system invokes this method to make the fragment visible on the user’s device.</td>
+								</tr>
+								<tr>
+									<td>onResume()</td>
+									<td>This method is called to make the visible fragment interactive.</td>
+								</tr>
+								<tr>
+									<td>onPause()</td>
+									<td>It indicates that the user is leaving the fragment. System call this method to commit the changes made to the fragment. </td>
+								</tr>
+								<tr>
+									<td>onStop()</td>
+									<td>Method to terminate the functioning and visibility of fragment from the user’s screen. </td>
+								</tr>
+								<tr>
+									<td>onDestoyView()</td>
+									<td>System calls this method to clean up all kinds of resources as well as view hierarchy associated with the fragment.</td>
+								</tr>
+								<tr>
+									<td>onDestroy()</td>
+									<td>It is called to perform the final clean up of fragment’s state and its lifecycle.</td>
+								</tr>
+								<tr>
+									<td>onDetach()</td>
+									<td>The system executes this method to disassociate the fragment from its host activity.</td>
+								</tr>
+							</table>
+							<br/>
+							<p>
+								To give an example of how these functions were implemented in our application, below you can observe how we coded the 'onViewCreated' function. This is called ofter the 'onCreateView' function, by which
+								point, the view of our application has been initialised, including text boxes and buttons, so in the 'onViewCreated' function our task was to bind these text boxes to private class String variables and also
+								bind the buttons on screen to the relevant class Buttons which trigger their own private method when clicked.
+							</p>
+							<span class="image main"><img src="../images/Login OnViewCreated.png" alt="" class="iterationBg" />
+								<p class="description">Figure 7: Login 'onViewCreated' code
+								</p>
+							</span>
+							<h3>Making Login More Secure</h3>
+							<p>
+								At this point, we had a fully functional login page, where a porter would enter their login details which would be checked against the backend to ensure that they match a relevant
+								database record. If this check was successful, a one-time pin was then requested from our backend, which generated a random 6-digit number and triggered the Twilio service to send this
+								one-time pin via SMS to the phone number a porter was registered with. Finally, if this one-time pin was entered correctly, the LoginFragment notified the MainActivity to set up and switch
+								to the Scanner Fragment, which holds the remaining functionality of our application. However, as we previously explained in this article, SMS is not the most secure method of communication,
+								and we felt that another layer of security was required to protect hospital data.
+								<br/><br/>
+								This is where we decided to use Firebase's secure token authentication system to add another layer of verification to our system. We decided to use this as our website and database were
+								already being hosted on Firebase, as per our clients' request, so ...
+							</p>
 							<h2>Bibliography</h2>
 							<p>
 								<ol>
@@ -301,8 +374,12 @@
 									</li>
 									<li>
 										Fletcher, J. (2022). Average walking speed: Comparisons by age, sex, and walking for health.
-										[online] www.medicalnewstoday.com. Available at: https://www.medicalnewstoday.com/articles/average-walking-speed
+										[online] Medical News Today. Available at: https://www.medicalnewstoday.com/articles/average-walking-speed
 										[Accessed 13 Mar. 2023].
+									</li>
+									<li>
+										Mishra, R. (2020). Fragment Lifecycle in Android.
+										[online] GeeksforGeeks. Available at: https://www.geeksforgeeks.org/fragment-lifecycle-in-android/ [Accessed 14 Mar. 2023].
 									</li>
 								</ol>
 							</p>
