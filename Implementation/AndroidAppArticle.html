@@ -250,6 +250,29 @@
 								to do is enter their name, click on the scan button to start tracking themselves, and respond to requests by clicking the buttons in the bottom-half of the screen. Overall,
 								all core app requirements had been completed at this stage.
 							</p>
+							<h2>Separation of Concerns</h2>
+							<p>
+								After informing our clients that we had met the core app requirements that were essential for the first launch, we then looked to iterate over our current
+								implementation to make it more robust whilst also implementing other important (P1) features.
+							</p>
+							<h3>Login Screen</h3>
+							<span class="image main"><img src="../images/Login Iterations.png" alt="" class="iterationBg" />
+								<p class="description">Figure 4: Login screen iterations.
+								</p>
+							</span>
+							<p>
+								The most obvious improvement which could be made based on our previous implementations was the login functionality, which was not up to industry standards. Especially when it
+								comes to hospitals, privacy is key; hospital records should be kept confidential, and no one should be able to pretend that they are a porter.
+								<br/><br/>
+								As a result, we created a new Login Fragment, which would act as a page allowing porters to login and verify themselves before being allowed to perform other work-related
+								operations. This fragment was supported by the Login template provided in Android Studio, which allowed us to create a robust login functionality, with a LoginViewModel class
+								to handle data input by the user through the fragment, and would make the relevant requests to the server to authenticate a user through the LoginDataSource class. The UML diagram
+								for the login functionality can be found below:
+							</p>
+							<span class="image main"><img src="../images/Login Iterations.png" alt="" class="iterationBg" />
+								<p class="description">Figure 5: Unified Modelling Language (UML) diagram overview of Login functionality.
+								</p>
+							</span>
 							<h2>Bibliography</h2>
 							<p>
 								<ol>
