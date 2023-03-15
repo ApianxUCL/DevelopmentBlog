@@ -354,7 +354,7 @@
 								<br/><br/>
 								This is where Firebase's secure token authentication system addressed our concerns by giving our mobile application the ability to generate a token for robust server communications.
 								We decided to use this as our website and database were already being hosted on Firebase, as per our clients' request, so instead of searching for some other external tool which
-								could cause compatibility issues, we made use of the Firebase Authentication SDK, which provided us with a rich set of libraries; specifically Firebase Cloud Messaging; to manag
+								could cause compatibility issues, we made use of the Firebase Authentication SDK, which provided us with a rich set of libraries; specifically Firebase Cloud Messaging (FCM); to manage
 								user authentication and authorization.
 								<br/><br/>
 								Overall, Firebase's token authentication system offered a much needed uppgrade to our login system, by generating a unique and secure token for each user, which is used to
@@ -375,14 +375,114 @@
 								when a delivery request is received and LocalBroadcastManager to flag a request via an internal broadcast while the app is running. It is also essential to supply the app's context to the service
 								to prevent any potential crashes due to memory leaks.
 								<br>
-								Thankfully, it is fairly simple to pass on context between components in Android:
+								Thankfully, it is fairly simple to pass on context between classes in Android:
 							</p>
-							<span class="image main"><img src="../images/Apian logo white text transparent background.png" alt="" class="iterationBg" />
-								<p class="description">Figure 8: Passing application context onto Firebase Messaging Service
+							<span class="image main"><img src="../images/Passing Context.png" alt="" class="iterationBg" />
+								<p class="description">Figure 8: Obtaining context from 'onAttach' method which is called first in a Fragment's lifecycle and passing it onto our Firebase Messaging Service
 								</p>
 							</span>
 							<p>
-								Moving onto how we defined our service,
+								Moving onto how we defined our service, we had to tailor Firebase's Messaging System to fit our application's data flow.
+								<br/><br/>
+								In our service implementation, we defined a method called generateToken() which obtains the Firebase Instance of the app that is running and retrieves its corresponding FCM
+								token. We call this method when a user successfully enters the correct one-time pin in the login page. 
+								<br/>
+								The token will be used to provide a secure messaging channel for Firebase to send delivery requests to our application. However, we also needed to ensure that our backend
+								had this token, so we overrode the service’s ‘onNewToken’ method, which is triggered automatically whenever there is a request to generate a new FCM token:
+							</p>
+							<span class="image main"><img src="../images/New Token.png" alt="" class="iterationBg" />
+								<p class="description">Figure 9: How our Firebase Messaging behaves whenever a new token is generated.
+								</p>
+							</span>
+							<p>
+								Now that we were sure that a token could be generated and distributed successfully, we moved on to define what actions our application would take upon receiving a Firebase
+								message i.e. a delivery request. For this, we overrode another service method, called 'onMessageReceived' which is triggered whenever Firebase uses a device's FCM token to
+								send a message to it.
+								<br/><br/>
+								In the method, we retrieved a message's title and body and obtained an instance of the NotificationManager class to generate and push a notification with the contents of the
+								received message. We also created a local broadcast to inform our Scanner Fragment of this request, so it could update its user views to allow a porter navigating the app
+								during the request to be able to view and respond to it.
+								<br/><br/>
+								This is what a delivery notification request looks like from our app:
+							</p>
+							<span class="image main"><img src="../images/Notification Request.jpg" alt="" class="iterationSmallBg" />
+								<p class="description">Figure 10: Sample notification request
+								</p>
+							</span>
+							<p>After successfully implementing Firebase token authentication and messaging, we were able to tick off some important (P1) product requirements:
+								<ul>
+									<li>The app should allow porters to login to the hospital servers securely with their credentials.</li>
+									<li>The app should authenticate users who successfully login, to ensure that they are real porters.</li>
+								</ul>
+								On top of that, we were also able to tick off all our P2 requirements, which stated:
+								<ul>
+									<li>The app could display the latest request made along with the delivery locations that need to be reached.</li>
+									<li>The app could trigger a notification every time a request is made.</li>
+								</ul>
+							</p>
+							<h2>Improving porter (user) experience</h2>
+							<p>
+								As we have already stated, user experience was a top priority for our mobile application, as we didn't want to slow down porters trying to perform their daily tasks.
+								<br/>
+								As of the current implementation seen so far, whenever a porter launched our application, they had to sign in with their name and phone number, enter the one-time pin
+								received and the app would then trigger a new FCM token for them and send it to the backend. During a normal work day, however, a porter may need to launch our app
+								multiple times, and having to log in every single time would be both tiring and expensive.
+							</p>
+							<h3>Caching login</h3>
+							<p>
+								The solution to this problem would be to save a porter's credentials whenever they log in whilst also allowing them an option to log out, which would preserve the core
+								requirement of phone re-usability between multiple porters.
+							</p>
+							<span class="image main"><img src="../images/Caching Login.png" alt="" class="iterationBg" />
+								<p class="description">Figure 11: How user credentials are cached upon successful verification
+								</p>
+							</span>
+							<p>
+								As you can see in the figure above, we were able to save user credentials in cache app memory. The next thing we did was add code to our Login Fragment which attempted
+								to gain access to shared preferences upon launch of the fragment. If it was successful, the login process was skipped and the Scanner Fragment was setup straight away,
+								whereas if it obtained <b>null</b> from trying to access these preferences, that meant that no one was signed in, so it would display the login page as normal.
+								<br/><br/>
+								This implementation made it easy to code the log out functionality, as all we had to do was add a button to our Scanner Fragment, which cleared the shared preferences of
+								the app and took the user back to the Login Fragment.
+								<br/><br/>
+								Caching login allowed us to fulfill two more P1 requirements which stated:
+								<ul>
+									<li>The app should allow porters to stay logged in by caching their login details, so they don't have to login again every time it is launched.</li>
+									<li>The app should allow porters to log out, so it can be re-used on the same device by other porters.</li>
+								</ul>
+							</p>
+							<h3>Indicating availability</h3>
+							<p>
+								As you will have read in our 'Research' section, when speaking to porters and our partner company, Apian, one of the biggest problems we discovered when it comes to the
+								current request system used in hospitals, is that whenever there is a delivery request, all porters are notified on their pagers, regardless if they are on break or even
+								fulfilling another delivery.
+								<br/>
+								Therefore, we felt it would be very useful for porters if they had the option to indicate via the app whether they are available or not to serve delivery requests.
+								<br/><br/>
+								We thought of a neat way to achieve this which was to replace the buttons for 'Start Scanning' and 'Stop Scanning' to 'Available' and 'Unavailable' respectively:
+							</p>
+							<span class="image main"><img src="../images/Availability App.png" alt="" class="iterationBg" />
+								<p class="description">Figure 12: New button labels to match availability status and their corresponding code
+								</p>
+							</span>
+							<p>
+								As you can observe in Figure 12 above, the code snippets are labelled 1-5 so that we can further explain their functionality:
+								<ol>
+									<li>When a button is clicked, it must be hidden and the other must be shown.</li>
+									<li>Starts / Stops the scan process for BLE beacons.</li>
+									<li>Manages the functionality seen in Figure 3 which handles the sending of beacons every 5 seconds to the backend. When the 'Available' button is clicked, the
+										handler is called to start executing the HTTP posts to the backend, whereas when the 'Unavailable' button is called, the buffer of currently detected beacons
+										is cleared and the handler stops transmitting.
+									</li>
+									<li>Sends a HTTP POST to the backend to indicate a porter's availability, depending on which of the two buttons was clicked.</li>
+									<li>Creates the relevant Toast (pop-up message) to reflect whether a porter is available or not to make deliveries.</li>
+								</ol>
+								Implementing this allowed us to complete yet another important app requirement which revolved around porters being able to indicate their availability to meet delivery
+								requests via the app.
+							</p>
+							<h3>Revamping Scanner Fragment User Interface</h3>
+							<p>
+								...
 							</p>
 							<h2>Bibliography</h2>
 							<p>
