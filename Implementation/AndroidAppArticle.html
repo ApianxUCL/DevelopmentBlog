@@ -335,7 +335,7 @@
 							</table>
 							<br/>
 							<p>
-								To give an example of how these functions were implemented in our application, below you can observe how we coded the 'onViewCreated' function. This is called ofter the 'onCreateView' function, by which
+								To give an example of how these functions were implemented in our application, below you can observe how we coded the 'onViewCreated' function. This is called after the 'onCreateView' function, by which
 								point, the view of our application has been initialised, including text boxes and buttons, so in the 'onViewCreated' function our task was to bind these text boxes to private class String variables and also
 								bind the buttons on screen to the relevant class Buttons which trigger their own private method when clicked.
 							</p>
@@ -345,14 +345,44 @@
 							</span>
 							<h3>Making Login More Secure</h3>
 							<p>
-								At this point, we had a fully functional login page, where a porter would enter their login details which would be checked against the backend to ensure that they match a relevant
-								database record. If this check was successful, a one-time pin was then requested from our backend, which generated a random 6-digit number and triggered the Twilio service to send this
-								one-time pin via SMS to the phone number a porter was registered with. Finally, if this one-time pin was entered correctly, the LoginFragment notified the MainActivity to set up and switch
-								to the Scanner Fragment, which holds the remaining functionality of our application. However, as we previously explained in this article, SMS is not the most secure method of communication,
-								and we felt that another layer of security was required to protect hospital data.
+								At this point, we had a fully functional login page, where porters' login credentials were verified against our backend server database records to check whether there was
+								a match. If this authentication process was successful, the backend would then generate a one-time pin and trigger the Twilio service to send this PIN via SMS to the phone number associated with
+								the porter's account. Finally, if this one-time pin was entered correctly, the LoginFragment notified the MainActivity to set up and switch to the Scanner Fragment, which
+								holds the remaining functionality of our application. However, while this approach provided some degree of security, we have already established in this article that SMS should
+								not be considered a secure method of communication due to the inherent vulnerabilities of the SMS protocol. As such, we decided that additional layers of security were required
+								to protect the hospital data we were working with and ensure secure communication between the server and our application.
 								<br/><br/>
-								This is where we decided to use Firebase's secure token authentication system to add another layer of verification to our system. We decided to use this as our website and database were
-								already being hosted on Firebase, as per our clients' request, so ...
+								This is where Firebase's secure token authentication system addressed our concerns by giving our mobile application the ability to generate a token for robust server communications.
+								We decided to use this as our website and database were already being hosted on Firebase, as per our clients' request, so instead of searching for some other external tool which
+								could cause compatibility issues, we made use of the Firebase Authentication SDK, which provided us with a rich set of libraries; specifically Firebase Cloud Messaging; to manag
+								user authentication and authorization.
+								<br/><br/>
+								Overall, Firebase's token authentication system offered a much needed uppgrade to our login system, by generating a unique and secure token for each user, which is used to
+								authenticate subsequent requests to protected resources within the application.
+							</p>
+							<h3>Setting up and connecting Firebase to our mobile application</h3>
+							<p>
+								Connecting our mobile app to our Firebase project was quite simple. It involved supplying our app's SHA Certificate to our Firebase project, which generated a custom json file
+								that was placed in our app's project directory to gain access to all relevant Google Firebase libraries we wanted to use. To import the necessary libraries, we then just added
+								a few lines of code to our app's dependencies which specified that we wanted to use Firebase's messaging and token services.
+							</p>
+							<h3>Firebase Messaging implementation steps</h3>
+							<p>
+								Now that we had access to all the necessary resources, we moved on to implement the new feature. Upon launching our app and specifically the Login Fragment, our Firebase Messaging
+								Service must be called and supplied with our app's current context. In android development, context acts as an interface to global information about the application environment.
+								It is an abstract class whose implementation is provided by the Android system and allows access to application-specific resources and classes, as well as up-calls for
+								application-level operations, <sub>[6]</sub> which the service needs. More specifically, it needs to access system services like the NotificationManager, to create push notifications
+								when a delivery request is received and LocalBroadcastManager to flag a request via an internal broadcast while the app is running. It is also essential to supply the app's context to the service
+								to prevent any potential crashes due to memory leaks.
+								<br>
+								Thankfully, it is fairly simple to pass on context between components in Android:
+							</p>
+							<span class="image main"><img src="../images/Apian logo white text transparent background.png" alt="" class="iterationBg" />
+								<p class="description">Figure 8: Passing application context onto Firebase Messaging Service
+								</p>
+							</span>
+							<p>
+								Moving onto how we defined our service,
 							</p>
 							<h2>Bibliography</h2>
 							<p>
@@ -380,6 +410,10 @@
 									<li>
 										Mishra, R. (2020). Fragment Lifecycle in Android.
 										[online] GeeksforGeeks. Available at: https://www.geeksforgeeks.org/fragment-lifecycle-in-android/ [Accessed 14 Mar. 2023].
+									</li>
+									<li>
+										Android Developers. (2023). Android Developers > Docs > Reference >Context.
+										[online] Available at: https://developer.android.com/reference/android/content/Context [Accessed 14 Mar. 2023].
 									</li>
 								</ol>
 							</p>
