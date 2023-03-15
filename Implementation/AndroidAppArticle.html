@@ -482,8 +482,72 @@
 							</p>
 							<h3>Revamping Scanner Fragment User Interface</h3>
 							<p>
-								...
+								In terms of functionality, most requirements had been implemented by this point. However, the Scanner Fragment was not looking very appealing to use, especially compared
+								to the Login Fragment. Furthermore, there was no way for a porter to view the current (if any) request they were meant to respond to on the Fragment view.
+								<br/><br/>
+								Our next step, therefore, was to make use of the local broadcast transmitted by our Firebase Messaging Service so as to retrieve the request in our Scanner Fragment and
+								display it in a 'TextView' object:
 							</p>
+							<span class="image main"><img src="../images/Sending Request.png" alt="" class="iterationBg" />
+								<p class="description">Figure 13: Sending local broadcast from Firebase service and retrieving it in Scanner Fragment
+								</p>
+							</span>
+							<p>
+								Again, we made use of a fundamental fragment method, this time the 'onCreate' method, to ensure that the broadcast receiver is setup and listening for requests before
+								the views of the fragment are even initialised.
+								<br/><br/>
+								Moving on to the final step of the revamp, it was now time to focus on the design of our Scanner Fragment since all other features were working end-to-end. Our main goal
+								for this was to have a fragment screen that was intuitive to use, whilst also looking neat and tidy with the Apian colour scheme. We are proud to say that our final design
+								met all these targets.
+							</p>
+							<span class="image main"><img src="../images/Scanner Fragment Final Design.png" alt="" class="iterationBg" />
+								<p class="description">Figure 14: Final Scanner Fragment screen design
+								</p>
+							</span>
+							<p>
+								As you have noticed, there is no longer a view of the nearest BLE devices. This was only a debugging mechanism that we intended to use during development which we ultimately
+								got rid off because porters do not care to see which beacons are near them or their MAC-addresses.
+							</p>
+							<h3>Packaging the app</h3>
+							<p>
+								Now that we were happy with how the app looked and behaved, we exported it as an APK through Android Studio and distributed it to our client, as a sample app, so we could get
+								their thoughts on the user interface and experience. Being able to export the app as an APK with professional branding also ticked off our penultimate app requirement.
+							</p>
+							<span class="image main"><img src="../images/App Icon Design.png" alt="" class="iterationBg" />
+								<p class="description">Figure 15: Our Apian branded app icon
+								</p>
+							</span>
+							<h2>Implementing the Final Requirement</h2>
+							<p>
+								We were now approaching the end of our implementation process, with the only requirement left to meet being: <b>The app should scan in the background for BLE beacons and
+								transmit them to the backend, without the screen having to be switched on.</b> Evidently, porters should not have to be on their phones, making sure the app is active all
+								the time to ensure that their location is being updated. They should only have to indicate that they are available, triggering the app to start scanning, and they should only
+								have to interact with the app when they receive a notification request. All the rest should be taken care of by the app while the porters' devices are in their pockets as they
+								are fulfilling their day-to-day tasks and deliveries.
+								<br/><br/>
+								In android development, this is not a difficult task to achieve as essentially what we had to do was keep our Scanner Fragment active in a foreground service. A foreground service is
+								a service that performs operations even when a user is not interacting with the application that launched it. It is a service that the user is actively aware of and isn’t
+								a candidate for the system to kill when low on memory.<sub>[7]</sub> This is crucial for our application and is the reason we chose to run our app on a foreground rather than
+								background service which can get terminated at any time by the operating system, especially with the latest versions of Android that constantly try to optimize battery
+								performance.
+								<br/><br/>
+								To implement our final requirement, we coded the Scanner Fragment to launch the service when the 'Available' button is clicked and stop the service to preserve battery when
+								the 'Unavailable' button is clicked. We also implemented the service to acquire a WakeLock as shown below in Figure 16:
+							</p>
+							<span class="image main"><img src="../images/WakeLockService.png" alt="" class="iterationBg" />
+								<p class="description">Figure 16: Foreground 'Wake Lock Service' implementation
+								</p>
+							</span>
+							<p>
+								This was the final and crucial component of our solution which ensured that the app could continue to scan for BLE beacons in the background without being interrupted by the
+								device's operating system. We demonstrated this implementation to our clients, showing that a porter's location kept being updated on our web application's frontend every 5 seconds
+								without us having to navigate the app, and they were very pleased with this implementation, which wrapped up multiple months of learning android development, coding and debugging.
+							</p>
+							<h2>Final app implementation</h2>
+							<span class="image main"><img src="../images/Final App Flow.png" alt="" class="iterationBgBigger" />
+								<p class="description">Figure 17: Final App Implementation Data Flow
+								</p>
+							</span>
 							<h2>Bibliography</h2>
 							<p>
 								<ol>
@@ -512,8 +576,12 @@
 										[online] GeeksforGeeks. Available at: https://www.geeksforgeeks.org/fragment-lifecycle-in-android/ [Accessed 14 Mar. 2023].
 									</li>
 									<li>
-										Android Developers. (2023). Android Developers > Docs > Reference >Context.
+										Android Developers. (2023). Android Developers > Docs > Reference > Context.
 										[online] Available at: https://developer.android.com/reference/android/content/Context [Accessed 14 Mar. 2023].
+									</li>
+									<li>
+										Dholakia, J. (2020). Foreground Services in Android.
+										[online] Medium. Available at: https://medium.com/@engineermuse/foreground-services-in-android-e131a863a33d [Accessed 15 Mar. 2023].
 									</li>
 								</ol>
 							</p>
