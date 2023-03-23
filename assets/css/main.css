@@ -4320,3 +4320,20 @@ input, select, textarea {
 		color: rgb(255, 70, 163)!important;
 		margin-right: 2rem;
 	  }
+
+	  .video-container {
+		width: 100%;
+		height: 0;
+		position: relative;
+		padding-bottom: 56.25%; /* 16:9 aspect ratio */
+		margin-top: 1.5rem;
+		margin-bottom: 1.5rem;
+	  }
+	  
+	  .video {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	  }
