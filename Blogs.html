@@ -400,9 +400,17 @@
 									<p>
 										The first sketch aimed for simplicity and ease of use, featuring a navigation bar for switching between live monitoring and delivery details. The live monitoring page displays porter availability with markers and allows sorting by distance, meeting the project requirements. The delivery details page provides a delivery history for logging and sanity checking. 
 									</p>
+									<div style="display: flex; gap: 1rem;">
+									<img class="image fit" style="width: 43%;" src="./images/APIAN_sketch_4.jpg">
+									<img class="image fit" style="width: 43%;" src="./images/APIAN_sketch_3.jpg">
+									</div>
 									<p>
 										The second sketch incorporated improvements such as a table on the delivery request page for better readability and access to features. Additionally, a view option was added to enable the user to see different hospital areas, reducing information overload. 
 									</p>
+									<div style="display: flex; gap: 1rem;">
+									<img class="image fit" style="width: 43%;" src="./images/APIAN_sketch_8.jpg">
+									<img class="image fit" style="width: 43%;" src="./images/APIAN_sketch_7.jpg">
+									</div>
 									<p>
 										We utilized the best components from both sketches to design an interface on Figma. Our iterative design process involved internal discussions and client feedback to incorporate desired features and ensure user-friendliness. The client's feedback during the Figma design review was particularly valuable, suggesting font changes and using Bootstrap UI icons for dropdown and 'sort by' components. They also advised on improving the display of the active page.
 									</p>
@@ -558,6 +566,7 @@
 									<p>
 										Following on from last week’s experiments and our need to discuss our findings with the client, we meet with the client in person on Tuesday to discuss the matter. In this meeting, the client more carefully explained the exact premise of the project that we are working on. Our project will be made to aid porters in (un)loading of drones between two hospitals. There is only one station per hospital. The client agreed that exact location tracking of porters with multiple beacons in each room was both unnecessarily expensive to implement and without merit to hospital efficiency. Given the other two propositions of tracking via chokepoints and per room, the client was initially very impressed with the creative thinking and leaned towards a chokepoint tracking system. However as discussion went on about both the extendability of the project and generalization of the solution to be applied to more hospitals more easily, we opted for the beacon per room solution. We also decided that the two solutions were in fact also synonymous as it was up to discretion whether or not all rooms contained beacons. At this point, our requirements have become more clear.
 									</p>
+									<img class="image left" style="border-radius: 4%;" src="./images/meeting note.JPG">
 									<h3>Setting Up the Website</h3>
 									<p>
 										This week, for the project, we setup the backend and frontend of the webapp that administrators will use. Initially, we considered various options for implementing the backend of our application. After careful evaluation, we chose to utilize the Spring Boot framework with Google Cloud SQL PostgreSQL for our database and deploy the app with Google Cloud Run. Some team members had prior experience with Spring Boot and recommended it as a dependable choice for our project. Additionally, our client recommended using the Google Cloud stack, which we found to be efficient and reliable for our needs. By selecting these technologies, we were able to create a strong and scalable backend system capable of processing real-time updates from the frontend accurately.
