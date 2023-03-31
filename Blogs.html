@@ -256,29 +256,28 @@
 							
 									<h3>Answers to our previous questions</h3>
 									<p>
-										<h4>Who exactly is going to use the application?</h4>
+										<h4 style="margin-top: 2rem;">Who exactly is going to use the application?</h4>
 										Estates & Facilities management staffwho organise, e.g. 
 										porters and , helideck personnel and in some cases, transport 
-										facilities, Laboratory staff, Pharmacy department staff
+										facilities, Laboratory staff, Pharmacy department staff.
 										<br>
-										<h4>>What are porters?<h4>
-										<br>
+										<h4 style="margin-top: 2rem;">What are porters?</h4>
 										Porters are staff who move patients and equipment around the hospital.
 										<br>
-										<h4>For the web application, is it going to be used on mobiles? Should we support mobiles, 
+										<h4 style="margin-top: 2rem;">For the web application, is it going to be used on mobiles? Should we support mobiles, 
 										have usable designs for them?</h4>
 										Both mobile and desktop. Should be web based and PWA for mobile. 
 										<br>
-										<h4>What BLE devices are we going to use for location tracking?</h4>
+										<h4 style="margin-top: 2rem;">What BLE devices are we going to use for location tracking?</h4>
 										UCL recommends Airtags; we could also use other BLE tags 
 										Airtags can only emit a pinging sound. 
 										To be confirmed and agreed upon after more research.
 										<br>
-										<h4>What is already done/implemented from Apian side? Mostly thinking about the 
+										<h4 style="margin-top: 2rem;">What is already done/implemented from Apian side? Mostly thinking about the 
 										integration of our app into the existing system.</h4>
 										Nothing.
 										<br>
-										<h4>
+										<h4 style="margin-top: 2rem;">
 										What criteria are going to be used to prioritise work? Who provides the information 
 										on it?</h4>
 										Further research is needed to determine how porter workload is currently prioritised. 
@@ -293,34 +292,34 @@
 										only can keep it at a certain temperature for X hrs so must be delivered before 
 										the cold chain is breached.
 										<br>
-										<h4>
+										<h4 style="margin-top: 2rem;">
 										Then we can add other layers such as: Prioritisation between samples and other 
 										porter work, Travelling salesperson problem - should a lower priority item be 
 										collected on the way to a higher priority item if timing is not significantly 
 										affected?</h4>
-										<br>
 										Capacity of the drone (a lower priority item may fit in the next incoming 
 										drone while a more urgent item can only fit in an empty drone that’s coming 
 										in next) - this implies higher volume								
 										<br>
-										<h4>How should emergencies be handled? Eg. What should the porter do if they’re in the 
+										<h4 style="margin-top: 2rem;">How should emergencies be handled? Eg. What should the porter do if they’re in the 
 										middle of a delivery? How to interrupt (or not) ongoing deliveries from technical 
 										and from business side?</h4>
 										Further research is needed
 										<br>
-										<h4>With regards to tracking porters in a multi story building, do you already have 
+										<h4 style="margin-top: 2rem;">With regards to tracking porters in a multi story building, do you already have 
 										a solution to this? We were thinking of using the porter’s smartphone to find out 
 										interior tracking and to know which floor the porters are in.
 										</h4>
 										Further research is needed. Porters don’t necessarily carry work liable smartphones.
 										<br>
-										<h4>How can we track individual high priority assets and equipment? Is this within the 
+										<h4 style="margin-top: 2rem;">How can we track individual high priority assets and equipment? Is this within the 
 										scope of the Apian? The alternative would be returning equipment to storage asap 
 										after use and a porter to check if equipment is available in storage (slower)
 										</h4>
 										Out of scope
 										<br>
-									</p>	
+									</p>
+									<h4>SUMMARY</h4>	
 									<p>
 										To summarise our new understanding of the project, we wrote a problem statement and 
 										solution for our partner to review and check we were on the same page:
@@ -361,9 +360,11 @@
 										Having now answered the questions posed last week and meeting Apian once more this week, we aim to settle on some initial requirements for the project. These requirements will help us plan the project and measure success. 
 										Prior to our meeting, we create personas of the potential users of our hospital porter tracking system. These personas help to shape our thinking and requirement setting. 
 									</p>
+									<img class="image fit" style="width: 63%;" src="./images/Persona1.png">
 									<p>
 										Amanda, a porter at Guy's Hospital and a member of the NHS staff, is responsible for loading medical packages onto drones in response to requests from laboratory staff. She finds the current system inefficient and exhausting because all porters are notified whenever there is a package to be delivered, regardless of their location in the hospital. Amanda is a person who strives to improve her work methods to make them more efficient and save time and effort. She believes her colleagues should do the same to create a happier atmosphere and improve working conditions. Despite not being a natural leader, Amanda appreciates that we considered her ideas when developing our new application prototypes.
 									</p>
+									<img class="image fit" style="width: 63%;" src="./images/Persona2.png">
 									<p>
 										David is the head of the CAD department at St. Thomas's hospital and is also a potential user of our system. However, unlike Amanda, he has a different perspective on the current drone delivery system for pharmaceuticals. He finds the current system to be satisfactory as the hospital drones can keep up with delivery requests with few delays. He prefers not to adopt a new system that would require him to remember more usernames and passwords in addition to the ones he already has. Although David prioritizes employee satisfaction, he would only consider changing his mind if there were no other options available to his staff. He understands the potential benefits and improvements that our proposed solution would provide. David also considers himself a confident and capable leader, preferring a system that allows him complete control to guide his staff when necessary.
 									</p>
@@ -401,9 +402,17 @@
 									<p>
 										The first sketch aimed for simplicity and ease of use, featuring a navigation bar for switching between live monitoring and delivery details. The live monitoring page displays porter availability with markers and allows sorting by distance, meeting the project requirements. The delivery details page provides a delivery history for logging and sanity checking. 
 									</p>
+									<div style="display: flex; gap: 1rem;">
+									<img class="image fit" style="width: 43%;" src="./images/APIAN_sketch_4.jpg">
+									<img class="image fit" style="width: 43%;" src="./images/APIAN_sketch_3.jpg">
+									</div>
 									<p>
 										The second sketch incorporated improvements such as a table on the delivery request page for better readability and access to features. Additionally, a view option was added to enable the user to see different hospital areas, reducing information overload. 
 									</p>
+									<div style="display: flex; gap: 1rem;">
+									<img class="image fit" style="width: 43%;" src="./images/APIAN_sketch_8.jpg">
+									<img class="image fit" style="width: 43%;" src="./images/APIAN_sketch_7.jpg">
+									</div>
 									<p>
 										We utilized the best components from both sketches to design an interface on Figma. Our iterative design process involved internal discussions and client feedback to incorporate desired features and ensure user-friendliness. The client's feedback during the Figma design review was particularly valuable, suggesting font changes and using Bootstrap UI icons for dropdown and 'sort by' components. They also advised on improving the display of the active page.
 									</p>
@@ -429,10 +438,12 @@
 										Before we start developing the product, committing ourselves to a tech stack, we perform some market research of existing solutions. We do this to discover and maintain the merit of previous solutions while improving on their shortcomings. We look at two such companies in particular.
 									</p>
 									<h3>UBI Solutions</h3>
+									<img class="image fit" style="width: 73%;" src="./images/UBI Solutions.PNG">
 									<p>
 										UBI Solutions is a French software company that specializes in developing asset tracking solutions primarily using RFID tags and mobile or fixed readers. Their solutions cater to various industries such as food, laundry, retail, and more. The company's main focus is on providing tailored solutions that meet their clients' needs effectively. We looked at their Hospital Assets Tracking solution, a problem similar to the problem our project faces. UBI utilizes BLE tags and beacons to track hospital assets such as bed sheets. The system aims to free up staff time, reduce equipment loss due to theft or negligence, log asset usage data, and implement automatic preventative care of assets.
 									</p>
 									<h3>Navenio</h3>
+									<img class="image fit" style="width: 73%;" src="./images/navenio.PNG">
 									<p>
 										Navenio, on the other hand, is a UK-based company that focuses on increasing hospitals' ROI with their smartphone-based location tracking and task assignment solution for hospital staff. They use a combination of IUD, GPS, and Wi-Fi to track staff locations accurately and utilize a task assignment system to increase efficiency. The system is capable of multiple floor location and tracking and can provide recommendations based on collected logistic data.
 									</p>
@@ -462,6 +473,7 @@
 									<p>Before we had the chance to go to the helpdesk and check, we had our weekly client meeting in which we discussed the issue. Our client happily agreed that they would be willing to fund any necessary purchases for the project and subscriptions to services should we need it, assuming the price was below £50, our client gave the greenlight to purchase any products necessary. This was extremely helpful, giving us a backup option if the computer science help desk did not have BLE beacons.</p>
 									<h3>Visiting the Helpdesk</h3>
 									<p>This week, we visit the Computer Science help desk several times until the relevant staff is available. We are able to obtain a variety of BLE beacons to experiment with (some broken, some without battery).</p>
+									<img class="image fit" src="./images/beacons.jpg">
 									<h3>Next Steps:</h3>
 									<p>
 										<ol>
@@ -492,6 +504,7 @@
 										Our primary focus during the initial stages was on the implementation of the essential functionality of our Android application. We developed an application that could scan for BLE devices with minimal user interface. This was a challenging task for us since we were still acquainting ourselves with how fragments, activities, and services operated in the Android development ecosystem. Moreover, one of the obstacles that we had to overcome was that many of the resources and tutorials we found online for BLE scanning used deprecated classes and methods. Thus, we had to create our version of a method to manage BLE scanning callbacks.
 									</p>
 									<h3>The Result</h3>
+									<img class="image centre" style="width: 83%;" src="./images/Apian Resources/App Iterations.png">
 									<p>
 										After putting in countless hours of effort, we were finally able to create our first sample application, which scanned for nearby Bluetooth devices, including BLE beacons, and displayed their MAC addresses. This implementation proved to be a valuable learning experience for our team and a crucial step towards developing the desired product.
 									</p>
@@ -559,6 +572,7 @@
 									<p>
 										Following on from last week’s experiments and our need to discuss our findings with the client, we meet with the client in person on Tuesday to discuss the matter. In this meeting, the client more carefully explained the exact premise of the project that we are working on. Our project will be made to aid porters in (un)loading of drones between two hospitals. There is only one station per hospital. The client agreed that exact location tracking of porters with multiple beacons in each room was both unnecessarily expensive to implement and without merit to hospital efficiency. Given the other two propositions of tracking via chokepoints and per room, the client was initially very impressed with the creative thinking and leaned towards a chokepoint tracking system. However as discussion went on about both the extendability of the project and generalization of the solution to be applied to more hospitals more easily, we opted for the beacon per room solution. We also decided that the two solutions were in fact also synonymous as it was up to discretion whether or not all rooms contained beacons. At this point, our requirements have become more clear.
 									</p>
+									<img class="image left" style="border-radius: 4%;" src="./images/meeting note.JPG">
 									<h3>Setting Up the Website</h3>
 									<p>
 										This week, for the project, we setup the backend and frontend of the webapp that administrators will use. Initially, we considered various options for implementing the backend of our application. After careful evaluation, we chose to utilize the Spring Boot framework with Google Cloud SQL PostgreSQL for our database and deploy the app with Google Cloud Run. Some team members had prior experience with Spring Boot and recommended it as a dependable choice for our project. Additionally, our client recommended using the Google Cloud stack, which we found to be efficient and reliable for our needs. By selecting these technologies, we were able to create a strong and scalable backend system capable of processing real-time updates from the frontend accurately.
@@ -571,6 +585,8 @@
 									<p>
 										For the frontend we use React due to the extensive code ecosystem providing plenty of examples to create UI and further due to React’s performance benefits. React makes extensive use of caching and immutability to create both rigorous determinant code and good performance, loading only what is necessary.
 									</p>
+									<img class="image left" style="border-radius: 4%;" src="./images/tech/React.png">
+									<br><br>
 									<p>
 										We structure our frontend with a page system, where each page is a wrapper component which will contain child components for individual features such as tables.
 									</p>
@@ -611,6 +627,7 @@
 									<p>
 										Our backend implementation utilizes Cloud SQL PostgreSQL as our database. Cloud SQL PostgreSQL is a fully managed relational database service that provides high performance, scalability, and availability. We selected this service because it is compatible with Spring Boot and offers automatic failover and data backup, which are critical for our application's reliability. With Cloud SQL, we quickly and easily set up our database, without worrying about infrastructure management. We have local configuration details in the application.yml file, while production configuration can be found in application-prod.yml. You can modify the datasource username, password, and instance-connection-name to configure the database.
 									</p>
+									<img class="image fit" style="border-radius: 4%;" src="./images/tech/cloudSQLPostgreSQL.png">
 									<h3>API</h3>
 									<p>
 										Domain Objects We implemented CRUD operations with REST API for our porter, location, delivery, and beacon domain objects. This allows us to create, read, update, and delete records in our database through HTTP requests. For instance, to create a new porter, we can send a POST request with the necessary information in the request body to the "/porters" endpoint. To retrieve all porters, a GET request can be sent to the same endpoint. We implemented similar endpoints for other domain objects. By using REST API, we made it easier for other systems to integrate with our system and interact with our data.
@@ -645,6 +662,8 @@
 										Currently the system is one way only, porters can only communicate with the webserver and post information. For our solution however, we need to be able to communicate in both directions. Having discussed requirements previously with our client, we knew that they wanted an SMS solution to make the project as extendable as possible. This was because they were concerned that porters may not have access to a smartphone in some hospitals, or that in the future for privacy reasons, porters may not use their personal phones for the app. They suggest to us using Twilio to implement this.
 									</p>
 									<h3>Using Twilio</h3>
+									<img class="image right" style="border-radius: 4%;" src="./images/tech/twilio.png">
+									
 									<p>
 										As part of our backend implementation, we integrated the Twilio messaging API to enable sending and receiving messages to and from the porters. We opted for Twilio because it offers a reliable and user-friendly API for SMS messaging that suits our requirements. To incorporate Twilio into our backend, we utilized the Twilio Java library and set up an API key and authentication token for our Twilio account. Additionally, we included configuration options in our application.yml file for easy modification of the account SID and authentication token as needed. By integrating Twilio, we provided real-time messaging capabilities to the porters, allowing them to receive important updates and information about their tasks directly through the application. 
 									</p>
@@ -674,6 +693,7 @@ We map the beacon MAC addresses to their corresponding locations on the floor pl
 									<p>
 										Live Updates We utilized JPA's EntityListeners to push live updates whenever there are porter updates. PorterEntityListener is a class that listens for any changes in the Porter entity. If there is a change, it automatically sends a real-time update to the frontend via websockets, which updates the porter's location on the floor plan in real-time.
 									</p>
+									<img class="image fit" style="border-radius: 4%;" src="./images/old floorplan.png">
 									<p>
 										Currently, location data is dummy information and not real tracking information, but we will implement this properly as the project goes on.
 									</p>
@@ -771,6 +791,7 @@ We map the beacon MAC addresses to their corresponding locations on the floor pl
 									<p>
 										After liasing with our client for several weeks about the matter, our client is able to obtain permission for us to use a floorplan of the hospital. They provide us with a floorplan of each floor of the hospital for our project. This week, having obtained the floorplan, we integrate the floorplan map into our frontend of our webapp. We add buttons to flip between pages of the floorplan.
 									</p>
+									<img class="image fit" style="border-radius: 4%;" src="./images/Apian_FinalWeb_1.png">
 									<p>
 										We also conduct extensive UI updates, improving the background, discarding redundant pages that were used for debugging and making the UI more intuitive.
 									</p>
@@ -798,6 +819,7 @@ We map the beacon MAC addresses to their corresponding locations on the floor pl
 									<p>
 										This week we integrated Firebase Cloud Messaging (FCM) into our application to send push notifications to users' mobile devices. This allows users to receive real-time updates on their deliveries and other relevant information. The integration was seamless as we were already using Firebase for hosting, and it allowed us to add this essential feature to our application easily. FirebaseMessagingConfig.java contains the functionality configuration, and the firebase-service-account.json file defines the Firebase service account.
 									</p>
+									<img class="image fit" style="border-radius: 4%;" src="./images/tech/firebaseMessagingDiagram.png">
 									<p>
 										We send push notifications whenever requesting a delivery. To identify a user's mobile phone, we use the FCM token sent to us and associate it with the porter through the POST "/porter/{id}/token/{token}" endpoint when a user logs in.
 									</p>
@@ -831,10 +853,12 @@ We map the beacon MAC addresses to their corresponding locations on the floor pl
 									<p>
 										For our web application, we utilized JUnit as our primary unit testing tool for backend services, while we used Jest for frontend components. JUnit is a widely used Java testing framework that allowed us to test individual components of our backend service, such as controllers, services, and repositories, while Jest, a popular testing framework for React applications, enabled us to test individual components' functionality in isolation.
 									</p>
+									<img class="image left" style="border-radius: 4%;" src="./images/tech/junit4.png">
 									<h3>Testing the Mobile App</h3>
 									<p>
 										For our Android mobile application, we leveraged the JUnit framework to test the reliability and resilience of our Kotlin methods by executing app functions on the Java Virtual Machine. We followed a test-driven development approach, which allowed us to identify and proactively address potential issues and errors early in the development cycle.
 									</p>
+									
 									<h3>Further Testing Notes</h3>
 									<p>
 										We also implemented unit testing to validate the accuracy and consistency of our beacon detection and formatting functionality, a crucial foundational block of the entire system that enabled our app to accurately identify and track porters within a hospital environment.
@@ -866,6 +890,7 @@ We map the beacon MAC addresses to their corresponding locations on the floor pl
 									<p>
 										Mobile app development necessitates the critical aspect of device compatibility testing, which involves evaluating an app's seamless functioning across diverse hardware and software configurations. This was particularly important in our circumstances, given the wide range of Android devices used in different UK hospitals, and the need to ensure that the app operated flawlessly on backup devices during emergency scenarios.
 									</p>
+									<img class="image fit" style="border-radius: 4%;" src="./images/Device Compatibility Testing.png">
 									<h3>Compatibility Testing</h3>
 									<p>
 										To accomplish comprehensive device compatibility testing, we debugged our application on multiple Android-based platforms, including physical devices from Samsung, Xiaomi, and Google, such as smartphones and tablets. We also used Android Studio's device emulator feature to simulate other devices, which was useful for initial testing but not sufficient for testing hardware-specific features like BLE scanning. Therefore, we prioritized testing on non-emulator devices to ensure accurate testing of our application's functionality. By conducting such testing, we could confidently ensure that our app would deliver optimal user experience on a wide range of devices.
@@ -878,7 +903,7 @@ We map the beacon MAC addresses to their corresponding locations on the floor pl
 										All device compatibility tests were thoroughly documented to serve as a valuable resource for our client in the future. By providing this documentation, our client can refer back to the tests conducted to identify potential causes of any new bugs and troubleshoot any issues. This approach demonstrated our commitment to transparency and accountability throughout the development process.
 									</p>
 									<p>
-										Now with a product that is clearly compatible with other android devices, we are ready to begin testing the product in an actual hospital: Northumbria Hospital. This week, we raise this in our weekly meeting.
+										Now with a product that is clearly compatible with other android devices, we are ready to begin testing the product in an actual hospital: Wansbeck Hospital. This week, we raise this in our weekly meeting.
 									</p>
 									<h3>Next Steps:</h3>
 									<p>
@@ -891,7 +916,14 @@ We map the beacon MAC addresses to their corresponding locations on the floor pl
 								<!-- twentyOne -->
 								<section id="twentyOne">
 									<header class="major"><h2>Week 21</h2></header>
-									<h3>Testing in Northumbria Hospital</h3>
+									<h3>Testing in Wansbeck Hospital</h3>
+									<div class="video-container">
+
+										<iframe class="video" src="https://www.youtube.com/embed/D4TUMseYWIM">
+
+										</iframe>
+
+									  </div>	
 									<p>
 										During the testing phase, we invited hospital porters to use our application and provide us with valuable firsthand feedback. By observing their usage of the application, we were able to note any issues they encountered or features they found confusing, allowing us to make necessary improvements.
 									</p>
@@ -938,7 +970,7 @@ We map the beacon MAC addresses to their corresponding locations on the floor pl
 									</p>
 									<h4>Compatibility</h4>
 									<p>
-										Our Android app can be downloaded as an APK from our public website: https://porterble-ui-c29ff.web.app/appInstructions. Additionally, our web app is publicly hosted and accessible through the same link.
+										Our Android app can be downloaded as an APK from our public website: <a href="https://porterble-ui-c29ff.web.app/appInstructions">https://porterble-ui-c29ff.web.app/appInstructions</a>. Additionally, our web app is publicly hosted and accessible through the same link.
 									</p>
 									<h4>Maintainability</h4>
 									<p>
